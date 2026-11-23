@@ -5,17 +5,22 @@ const nav = document.querySelector(".nav");
 new IntersectionObserver(([e]) => nav.classList.toggle("solid", !e.isIntersecting), { rootMargin: "-68px 0px 0px" })
   .observe(document.querySelector(".hero"));
 
-// Reveal sections as they enter
+// Hero slideshow: slow crossfade, paused for reduced motion
+const slides = [...document.querySelectorAll(".hero-img")];
+if (slides.length > 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  let s = 0;
+  setInterval(() => {
+    slides[s].classList.remove("on");
+    s = (s + 1) % slides.length;
+    slides[s].classList.add("on");
+  }, 6000);
+}
+
+// Reveal text and unveil photos as they enter
 const io = new IntersectionObserver((entries) => entries.forEach((e) => {
   if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-}), { threshold: 0.15 });
-document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-
-// Stories carousel arrows
-const track = document.querySelector(".track");
-document.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", () => {
-  track.scrollBy({ left: Number(b.dataset.dir) * track.clientWidth * 0.8, behavior: "smooth" });
-}));
+}), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+document.querySelectorAll(".reveal, .clip").forEach((el) => io.observe(el));
 
 // Lightbox over every zoomable photo, in page order
 const items = [...document.querySelectorAll("[data-full]")];
@@ -26,12 +31,16 @@ let cur = 0;
 const show = (i) => {
   cur = (i + items.length) % items.length;
   const el = items[cur];
-  const img = el.tagName === "IMG" ? el : el.querySelector("img");
   lbImg.src = el.dataset.full;
-  lbImg.alt = img.alt;
+  lbImg.alt = el.alt;
   lbCap.textContent = el.dataset.place || "";
 };
-items.forEach((el, i) => el.addEventListener("click", () => { show(i); lb.showModal(); }));
+items.forEach((el, i) => {
+  const open = () => { show(i); lb.showModal(); };
+  el.tabIndex = 0; el.setAttribute("role", "button");
+  el.addEventListener("click", open);
+  el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+});
 lb.querySelector(".close").addEventListener("click", () => lb.close());
 lb.querySelector(".prev").addEventListener("click", () => show(cur - 1));
 lb.querySelector(".next").addEventListener("click", () => show(cur + 1));
@@ -52,6 +61,6 @@ form.addEventListener("submit", (e) => {
     return;
   }
   err.textContent = "";
-  const body = `Names: ${d.names}\nEmail: ${d.email}\nDate: ${d.date || "-"}\nLocation: ${d.location || "-"}\n\n${d.message}`;
+  const body = `Names: ${d.names}\nEmail: ${d.email}\nDate: ${d.date || "-"}\nLocation: ${d.location || "-"}\nCoverage: ${d.coverage || "-"}\n\n${d.message}`;
   location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Wedding enquiry, " + d.names)}&body=${encodeURIComponent(body)}`;
 });
