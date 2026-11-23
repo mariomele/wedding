@@ -44,6 +44,7 @@ h2 em, .statement em { color: var(--ink-2); }
 .hero { position: relative; height: 100vh; height: 100dvh; min-height: 560px; overflow: hidden; color: #f7f4ee; background: #0e1420; }
 .hero-img { position: absolute; inset: 0; height: 100%; object-fit: cover; object-position: 50% 62%; opacity: 0; transform: scale(1.08); transition: opacity 1.8s cubic-bezier(.4,0,.2,1), transform 9s linear; }
 .hero-img.on { opacity: 1; transform: scale(1.01); }
+.hero-img[src*="8361666273"] { object-position: 12% 60%; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(6 9 16 / .62), rgb(6 9 16 / 0) 48%), linear-gradient(to right, rgb(6 9 16 / .35), rgb(6 9 16 / 0) 45%), linear-gradient(to bottom, rgb(6 9 16 / .35), rgb(6 9 16 / 0) 22%); }
 .hero-copy { position: absolute; z-index: 1; left: var(--gut); bottom: clamp(40px, 9vh, 96px); }
 .hero h1 { font-size: clamp(44px, 6.3vw, 100px); line-height: .94; letter-spacing: -.025em; text-shadow: 0 16px 38px rgb(0 0 0 / .28); }
