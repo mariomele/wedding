@@ -2,8 +2,8 @@ html, body { background: #f4f1ea; }
 :root {
   --bg: #f4f1ea;          /* ivory paper */
   --ink: #1c1b18;
-  --ink-2: rgb(28 27 24 / .66);
-  --ink-3: rgb(28 27 24 / .44);
+  --ink-2: rgb(28 27 24 / .74);
+  --ink-3: rgb(28 27 24 / .6);
   --line: rgb(28 27 24 / .14);
   --night: #141311;       /* approach + footer */
   --paper: #ebe6dc;
@@ -123,7 +123,7 @@ figcaption { margin-top: 12px; font: 500 10px/1 var(--sans); letter-spacing: .26
 .ap-copy > p { font: 300 clamp(19px, 1.6vw, 23px)/1.55 var(--serif); color: rgb(235 230 220 / .8); max-width: 34ch; }
 .principles { list-style: none; border-top: 1px solid rgb(235 230 220 / .16); }
 .principles li { display: grid; grid-template-columns: 44px 1fr; padding: 18px 0; border-bottom: 1px solid rgb(235 230 220 / .16); font-size: 15px; color: rgb(235 230 220 / .64); }
-.principles li span { grid-row: span 2; font: italic 300 20px/1.2 var(--serif); color: rgb(235 230 220 / .45); }
+.principles li span { grid-row: span 2; font: italic 300 20px/1.2 var(--serif); color: rgb(235 230 220 / .62); }
 .principles b { display: block; font: 400 22px/1.2 var(--serif); color: var(--paper); margin-bottom: 2px; }
 @media (max-width: 860px) { .approach .ap-img, .ap-copy { grid-column: 1 / -1; } .ap-copy { margin-top: 56px; } }
 
@@ -181,7 +181,7 @@ button[type=submit]:active { transform: scale(.97); }
 /* Footer */
 footer { background: var(--night); color: var(--paper); padding: clamp(64px, 10vh, 110px) var(--gut) 32px; overflow: hidden; }
 .wordmark { font: 300 clamp(60px, 15vw, 250px)/.85 var(--serif); letter-spacing: -.04em; white-space: nowrap; text-align: center; }
-.foot-row { display: flex; flex-wrap: wrap; gap: 14px 36px; justify-content: space-between; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgb(235 230 220 / .16); font: 500 10px/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: rgb(235 230 220 / .6); }
+.foot-row { display: flex; flex-wrap: wrap; gap: 14px 36px; justify-content: space-between; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgb(235 230 220 / .16); font: 500 10px/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: rgb(235 230 220 / .72); }
 .foot-row a { text-decoration: none; }
 .foot-row a:hover { color: var(--paper); }
 
