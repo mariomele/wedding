@@ -143,6 +143,15 @@ figcaption { margin-top: 12px; font: 500 10px/1 var(--sans); letter-spacing: .26
 .p-note { font-size: 14px; color: var(--ink-2); }
 .p-note a { margin-left: .4em; font: italic 300 19px/1 var(--serif); color: var(--ink); }
 @media (max-width: 860px) { .big-num, .dl-copy { grid-column: 1 / -1; } .big-num { margin-bottom: 40px; } }
+.why { grid-column: 1 / -1; margin-top: clamp(80px, 13vh, 150px); padding-top: 48px; border-top: 1px solid var(--line); }
+.why h3 { font-size: clamp(30px, 3.2vw, 46px); line-height: 1.05; margin-bottom: 48px; }
+.why h3 em { color: var(--ink-2); }
+.benefits { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 32px; }
+.benefits li { display: grid; gap: 12px; align-content: start; font-size: 15px; color: var(--ink-2); }
+.benefits span { font: 500 11px/1 var(--sans); letter-spacing: .28em; color: var(--ink-3); }
+.benefits b { font: 400 24px/1.15 var(--serif); color: var(--ink); }
+@media (max-width: 1000px) { .benefits { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .benefits { grid-template-columns: 1fr; } }
 
 /* Portfolio */
 .portfolio { padding: clamp(80px, 12vh, 140px) 0 clamp(96px, 14vh, 160px); border-top: 1px solid var(--line); margin: 0 var(--gut); }
